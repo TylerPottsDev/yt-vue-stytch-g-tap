@@ -10,7 +10,15 @@ const setup = async () => {
 		loginOrSignupView: {
 			products: ['oauth'],
 			oauthOptions: {
-				providers: [{type: 'google', 'one_tap': true, position: 'embedded'}]
+				providers: [
+					{
+						type: 'google', 
+						'one_tap': true,
+						position: 'embedded'
+					}
+				],
+				signupRedirectURL: 'http://localhost:3000/',
+				loginRedirectURL: 'http://localhost:3000/',
 			},
 		},
 		style: {
@@ -18,7 +26,6 @@ const setup = async () => {
 			width: '321px',
 			primaryColor: '#106ee9',
 		},
-		publicToken: "public-token-test-2e21111b-02b5-4c03-8815-a01353e5e3f3",
 		callbacks: {
 			onEvent: (data) => {
 				console.log(data);
@@ -27,6 +34,8 @@ const setup = async () => {
 			onError: (data) => console.log(data),
 		},
 	})
+
+	console.log(stytch.oauth.google.getUrl());
 }
 
 onMounted(() => {
