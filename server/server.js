@@ -34,7 +34,7 @@ app.get('/auth', async (req, res) => {
 			session_duration_minutes: 5
 		})
 
-		res.redirect(`http://localhost:3000?session_token=${response.session.stytch_session.session_token}`)
+		res.redirect(`https://localhost:3000?session_token=${response.session.stytch_session.session_token}`)
 	} catch (err) {
 		console.log(err)
 

@@ -5,7 +5,7 @@ import { onMounted } from 'vue'
 const setup = async () => {
 	const Stytch = await loadStytch()
 
-	let stytch = Stytch("public-token-test-2e21111b-02b5-4c03-8815-a01353e5e3f3", {
+	let stytch = Stytch("public-token-test-2e21111b-02b5-4c03-8815-a01353e5e3f3").mount({
 		elementId: "#gonetap",
 		loginOrSignupView: {
 			products: ['oauth'],
@@ -14,28 +14,17 @@ const setup = async () => {
 					{
 						type: 'google', 
 						'one_tap': true,
-						position: 'embedded'
+						position: 'embedded',
 					}
-				],
-				signupRedirectURL: 'http://localhost:3000/',
-				loginRedirectURL: 'http://localhost:3000/',
+				]
 			},
 		},
 		style: {
-			fontFamily: 'Arial',
-			width: '321px',
-			primaryColor: '#106ee9',
-		},
-		callbacks: {
-			onEvent: (data) => {
-				console.log(data);
-			},
-			onSuccess: (data) => console.log(data),
-			onError: (data) => console.log(data),
-		},
+			width: 'calc(100% - 20px)'
+		}
 	})
 
-	console.log(stytch.oauth.google.getUrl());
+	console.log(stytch);
 }
 
 onMounted(() => {
